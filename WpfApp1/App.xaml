@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Purple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Cyan.xaml" />
                 <ResourceDictionary Source="\styles\stylelogin.xaml"/>
+                <ResourceDictionary Source="\styles\Dark.xaml"/>
+                <ResourceDictionary Source="\styles\Light.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

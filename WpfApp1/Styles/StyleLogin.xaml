@@ -7,4 +7,163 @@
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="WindowStyle" Value="None"/>
     </Style>
+
+    <LinearGradientBrush x:Key="GradientBackgroundBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#462AD8" Offset="0"/>
+        <GradientStop Color="#DA34AE" Offset="0.75"/>
+        <GradientStop Color="#8A16C1" Offset="1"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="PersonalAccountBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="30"/>
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabControlPersonalAccountStyle" TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="TabStripPlacement" Value="Left"/>
+        <Setter Property="Foreground" Value="{DynamicResource ColorLightPink}"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+
+
+    <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource ColorLightPink}"/>
+        <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="Width" Value="77"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid>
+                        <Border Name="Border" BorderBrush="Transparent" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="ContentSite"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          ContentSource="Header"
+                          Margin="10,2"/>
+                        </Border>
+                        <Border x:Name="SelectedUnderline" BorderBrush="{DynamicResource ColorLightPink}" BorderThickness="0,0,0,2" CornerRadius="2,2,0,0" Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                            <Setter Property="Opacity" Value="1"/>
+                            <Setter TargetName="SelectedUnderline" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="PersonalAccountItemStyle" TargetType="{x:Type TabItem}" BasedOn="{StaticResource TabItemStyle}">
+        <Setter Property="FontFamily" Value="Dhurjati"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{DynamicResource ColorLightPink}"/>
+        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid>
+                        <Border Name="Border" BorderBrush="Transparent" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="ContentSite"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              ContentSource="Header"
+              Margin="10,12"/>
+                        </Border>
+                        <Border x:Name="SelectedUnderline" BorderBrush="{DynamicResource ColorLightPink}" BorderThickness="2,2,2,2" CornerRadius="2,30,2,30" Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                            <Setter Property="Opacity" Value="1"/>
+                            <Setter TargetName="SelectedUnderline" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="menuButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#fff" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="15 0 15 5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="AliceBlue"/>
+                <Setter Property="Background" Value="#8A16C1"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="Page_Style"
+       TargetType="{x:Type Page}">
+
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="0"
+                                Y="50" />
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="Visibility"
+                 Value="Collapsed">
+
+                <Setter Property="Opacity"
+                    Value="0" />
+
+            </Trigger>
+
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     Duration="0:0:1"
+                                     From="0"
+                                     To="1" />
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                     From="50"
+                                     To="0"
+                                     Duration="0:0:0.8"
+                                     DecelerationRatio="0.6" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+        </Style.Triggers>
+
+    </Style>
 </ResourceDictionary>
