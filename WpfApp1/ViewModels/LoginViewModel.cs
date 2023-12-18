@@ -23,10 +23,7 @@ namespace WpfApp1.ViewModels
         private string _password;
         private string _errorMessage;
         private bool _isViewVisible = true;
-        private string _firstregpassword;
-        private string _secondregpassword;
-        public static LoginViewModel loginViewModel;
-        public LoginWindow loginWindow = LoginWindow.loginWindow;
+        public LoginWindow loginWindow;
 
         private IUserRepository userRepository;
 
@@ -85,33 +82,6 @@ namespace WpfApp1.ViewModels
             }
         }
 
-        //Для регистрации
-        public string FirstRegPassword
-        {
-            get { return _firstregpassword; }
-            set
-            {
-                if (_firstregpassword != value)
-                {
-                    _firstregpassword = value;
-                    OnPropertyChanged(nameof(FirstRegPassword));
-                }
-            }
-        }
-
-        public string SecondRegPassword
-        {
-            get { return _secondregpassword; }
-            set
-            {
-                if (_secondregpassword != value)
-                {
-                    _secondregpassword = value;
-                    OnPropertyChanged(nameof(SecondRegPassword));
-                }
-            }
-        }
-
         //-> Commands
         public ICommand LoginCommand { get; private set; }
         public ICommand RecoverPasswordCommand { get; private set; }
@@ -155,30 +125,19 @@ namespace WpfApp1.ViewModels
                 IsViewVisible = false;
                 Main window = new Main();
                 window.Show();
-
-                if (Application.Current.MainWindow is LoginWindow loginWindow1)
-                {
-                    loginWindow1.Close();
-                }
+                LoginWindow loginWindow1 = loginWindow;
+                loginWindow1.Close();
             }
             else
             {
-                ErrorMessage = "*Неверный пароль или логин.";
+                ErrorMessage = "* Invalid username or password";
             }
         }
 
         private void ExecuteRegisterCommand(object parameter)
         {
-            if (FirstRegPassword == SecondRegPassword)
-            {
-                userRepository.CreateUser(Username, FirstRegPassword);
-                MessageBox.Show("Пользователь создан!");
-            }
-            else
-            {
-                MessageBox.Show("Пароли не совпадают");
-            }
-            
+            userRepository.CreateUser(Username, Password);
+            MessageBox.Show("Пользователь создан!");
                
         }
 

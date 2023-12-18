@@ -163,47 +163,30 @@
 
                     <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Авторизуйтесь или создайте аккаунт!"></TextBlock>
 
-                    <TextBox Margin="0,20,0,0" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUsername" Width="300" Height="50" FontSize="16" Foreground="Purple" materialDesign:HintAssist.Hint="Введите Имя"
+                    <TextBox Margin="0,20,0,0" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUsername" Width="300" FontSize="18" Foreground="Purple" materialDesign:HintAssist.Hint="Введите Имя"
                              materialDesign:HintAssist.HintOpacity="0.9" BorderThickness="2" materialDesign:HintAssist.FloatingHintHorizontalAlignment="Center"
                              BorderBrush="{DynamicResource MaterialDesignTextFieldBoxHoverBackground}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              materialDesign:HintAssist.Background="Transparent">
                         <TextBox.Background>
-                            <ImageBrush ImageSource="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\userlogofortextbox.png" 
-                                        Stretch="Uniform"
-                                        Opacity="0.4">
-                                <ImageBrush.ViewportUnits>
-                                    <BrushMappingMode>RelativeToBoundingBox</BrushMappingMode>
-                                </ImageBrush.ViewportUnits>
-                                <ImageBrush.Viewport>
-                                    <Rect>0,0.25,1.85,0.45</Rect>
-                                </ImageBrush.Viewport>
-                            </ImageBrush>
+                            <ImageBrush ImageSource="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Right"
+                                        />
                         </TextBox.Background>
                         
                     </TextBox>
-                    <TextBlock Text="Пароль" HorizontalAlignment="Left"
-                               Margin="100,20,0,0"
-                               Foreground="Purple"
-                               FontSize="16" 
-                               materialDesign:ElevationAssist.Elevation="Dp24"></TextBlock>
+                    <TextBlock Text="Password" HorizontalAlignment="Left" Margin="100,20,0,0"></TextBlock>
                     <TextBox Margin="0,0,0,0"
                                  x:Name="password" Width="300" FontSize="18" Foreground="Purple"
+                                 materialDesign:HintAssist.Hint=""
                                  
-                                 Height="50"
                                  materialDesign:HintAssist.HintOpacity="0.9"
                                  materialDesign:HintAssist.FloatingHintHorizontalAlignment="Center" 
                                  BorderThickness="2"
                                  BorderBrush="{DynamicResource MaterialDesignTextFieldBoxHoverBackground}"
-                                 Style="{StaticResource MaterialDesignTextBoxBase}"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
-                                 FontFamily="Segoe MDL2 Assets">
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\keyicon.png"
-                                        Stretch="Uniform"
-                                        AlignmentX="Right"
-                                        Opacity="0.4"/>
-                        </TextBox.Background>
-                    </TextBox>
+                                 FontFamily="Wingdings"/>
                     <TextBlock Text="{Binding ErrorMessage}"
                                Foreground="#D7596D"
                                Margin="0,5,0,0"
@@ -228,30 +211,9 @@
                         <Point X="0.5" Y="0.5"/>
                     </StackPanel.RenderTransformOrigin>
                     <Image Name="Userlogo2" Margin="0,0,0,5" Source="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\user-icon.png" Height="60" materialDesign:ElevationAssist.Elevation="Dp0"></Image>
-                    <TextBox Margin="0,20,0,0" Text="{Binding Username}" x:Name="txtName" Width="300" Height="60" FontSize="16" Foreground="Purple" materialDesign:HintAssist.Hint="Введите Имя" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Margin="0,20,0,0" 
-                                 x:Name="txtPasswordReg" 
-                                 Width="300" Height="60" 
-                                 FontSize="18" Foreground="Purple"
-                                 materialDesign:HintAssist.Hint="Введите Пароль" BorderThickness="2" 
-                                 BorderBrush="{DynamicResource MaterialDesignTextFieldBoxHoverBackground}" 
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 Text="{Binding FirstRegPassword}"
-                                 FontFamily="Segoe MDL2 Assets">
-                        
-                    </TextBox>
-                    <TextBox Margin="0,20,0,0" 
-                                 x:Name="txtConfirmPassword" 
-                                 Width="300" Height="60"
-                                 FontSize="18" Foreground="Purple" 
-                                 materialDesign:HintAssist.Hint="Повторите Пароль" 
-                                 BorderThickness="2" 
-                                 BorderBrush="{DynamicResource MaterialDesignTextFieldBoxHoverBackground}" 
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 Text="{Binding SecondRegPassword}"
-                                 FontFamily="Segoe MDL2 Assets">
-                        
-                    </TextBox>
+                    <TextBox Margin="0,20,0,0" Text="" x:Name="txtName" Width="300" FontSize="18" Foreground="Purple" materialDesign:HintAssist.Hint="Введите Имя" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                    <PasswordBox Margin="0,20,0,0" x:Name="txtPasswordReg" Width="300" FontSize="18" Foreground="Purple" materialDesign:HintAssist.Hint="Введите Пароль" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                    <PasswordBox Margin="0,20,0,0" x:Name="txtConfirmPassword" Width="300" FontSize="18" Foreground="Purple" materialDesign:HintAssist.Hint="Повторите Пароль" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
                     <Button Margin="0,20,0,0" x:Name="registerBtn" Command="{Binding RegisterCommand}" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ElevationAssist.Elevation="Dp5" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Зарегистрироваться"/>
                     <Button Margin="0,5,0,0" x:Name="returnBtn" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ElevationAssist.Elevation="Dp5" Height="25" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" Content="Вернуться"/>
                 </StackPanel>
