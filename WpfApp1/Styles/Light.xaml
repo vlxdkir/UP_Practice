@@ -3,7 +3,7 @@
     <Style x:Key="DarkTheme" TargetType="Border">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\lightfon.jpg" />
+                <ImageBrush ImageSource="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\darkfon.jpg" />
             </Setter.Value>
         </Setter>
     </Style>

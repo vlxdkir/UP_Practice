@@ -13,9 +13,11 @@ namespace WpfApp1.Models
         void Add(UserModel userModel);
         void Edit(UserModel userModel);
         void Remove(int id);
-        void CreateUser(string login, string password);
+        void CreateUser(string login, string password, int accesslevel);
         UserModel GetById(int id);
         UserModel GetByUsername(string username);
+
+        List<UserModel> GetAllUsers();
         IEnumerable<UserModel> GetByAll();
         //...
     }

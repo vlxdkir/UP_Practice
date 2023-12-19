@@ -29,12 +29,12 @@
                     <WrapPanel Margin="10 10" HorizontalAlignment="Center">
                         <TextBlock Text="Тема" VerticalAlignment="Center" Foreground="AliceBlue" FontSize="25"/>
                         <local:SwitchToggle x:Name="BtnToggle"
-                    Margin="5"
-                    Width="40" 
-                    Height="30"
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Left" 
-                    MouseLeftButtonDown="SwitchToggle_MouseLeftButtonDown"/>
+                        Margin="5"
+                        Width="40" 
+                        Height="30"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left" 
+                        MouseLeftButtonDown="SwitchToggle_MouseLeftButtonDown"/>
                     </WrapPanel>
                     <WrapPanel>
                         <TextBlock Text="фвфывфы" Foreground="White"/>

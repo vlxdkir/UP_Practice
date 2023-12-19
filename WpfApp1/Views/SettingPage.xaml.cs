@@ -72,17 +72,21 @@ namespace WpfApp1.Views
             //Application.Current.Resources.Clear();
             //Application.Current.Resources.MergedDictionaries.Add(resourceDict);
             Main main = Application.Current.Windows.OfType<Main>().FirstOrDefault();
+
+            // Удаление ресурсных словарей, связанных с темами (если они уже были добавлены)
+            main.Resources.MergedDictionaries.Clear();
+
             if (BtnToggle.Toggled1 == true)
             {
                 ResourceDictionary dark = new ResourceDictionary();
-                dark.Source = new Uri("E:\\РПМ\\УП_ПРАКТИКА\\WpfApp1\\WpfApp1\\Styles\\Dark.xaml", UriKind.Absolute);
-                System.Windows.Application.Current.Resources.MergedDictionaries.Add(dark);
+                dark.Source = new Uri("C:\\Users\\Gigabyte\\Desktop\\UP_Practice\\WpfApp1\\Styles\\Dark.xaml", UriKind.Absolute);
+                main.Resources.MergedDictionaries.Add(dark);
             }
             else
             {
-                ResourceDictionary Light = new ResourceDictionary();
-                Light.Source = new Uri("E:\\РПМ\\УП_ПРАКТИКА\\WpfApp1\\WpfApp1\\Styles\\Light.xaml", UriKind.Absolute);
-                System.Windows.Application.Current.Resources.MergedDictionaries.Add(Light);
+                ResourceDictionary light = new ResourceDictionary();
+                light.Source = new Uri("C:\\Users\\Gigabyte\\Desktop\\UP_Practice\\WpfApp1\\Styles\\Light.xaml", UriKind.Absolute);
+                main.Resources.MergedDictionaries.Add(light);
             }
         }
 

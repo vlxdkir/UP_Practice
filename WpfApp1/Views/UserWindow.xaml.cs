@@ -15,15 +15,13 @@ using System.Windows.Shapes;
 namespace WpfApp1.Views
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для UserWindow.xaml
     /// </summary>
-    public partial class Main : Window
+    public partial class UserWindow : Window
     {
-        public static Main main;
-        public Main()
+        public UserWindow()
         {
             InitializeComponent();
-            main = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,12 +36,12 @@ namespace WpfApp1.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            
+            //MainFrame.Content = new AddPage();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new HomePage();
+            MainFrame.Content = new HomeUserPage();
         }
 
         public void ChangeImage(Uri newImageUri)

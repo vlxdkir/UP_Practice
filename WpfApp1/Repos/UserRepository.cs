@@ -34,16 +34,17 @@ namespace WpfApp1.Repos
             return validUser;
         }
 
-        public void CreateUser(string login, string password)
+        public void CreateUser(string login, string password, int accessLevel)
         {
             using (var connection = GetConnection())
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into [User] (Username , Password) " + "values (@Username, @Password)";
+                command.CommandText = "insert into [User] (Username , Password, AccessLevel) " + "values (@Username, @Password, @AccessLevel)";
                 command.Parameters.AddWithValue("@Username", login);
                 command.Parameters.AddWithValue("@Password", password);
+                command.Parameters.AddWithValue("@AccessLevel", accessLevel);
                 command.ExecuteNonQuery();
 
             }
@@ -83,12 +84,44 @@ namespace WpfApp1.Repos
                             Name = reader[3].ToString(),
                             LastName = reader[4].ToString(),
                             Email = reader[5].ToString(),
-                            
+                            AccessLevel = Convert.ToInt32(reader["AccessLevel"])
+
                         };
                     }
                 }
             }
             return user;
+        }
+
+        public List<UserModel> GetAllUsers()
+        {
+            List<UserModel> users = new List<UserModel>();
+
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand("SELECT * FROM [User]", connection))
+            {
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new UserModel
+                        {
+                            Id = reader["Id"] == DBNull.Value ? null : reader["Id"].ToString(),
+                            Username = reader["Username"] == DBNull.Value ? null : reader["Username"].ToString(),
+                            Password = reader["Password"] == DBNull.Value ? null : reader["Password"].ToString(),
+                            Name = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString(),
+                            LastName = reader["Lastname"] == DBNull.Value ? null : reader["Lastname"].ToString(),
+                            Email = reader["Email"] == DBNull.Value ? null : reader["Email"].ToString(),
+                            AccessLevel = reader["AccessLevel"] == DBNull.Value ? 0 : Convert.ToInt32(reader["AccessLevel"])
+                        };
+                        users.Add(user);
+                    }
+                }
+            }
+            
+            return users;
         }
         public void Remove(int id)
         {
