@@ -12,7 +12,7 @@ namespace WpfApp1.Repos
         private readonly string _connectionString;
         public RepositoryBase()
         {
-            _connectionString = "Server=dbs.mssql.app.biik.ru; Database=sergio; Integrated Security=true";
+            _connectionString = "Server=DESKTOP-JIQP28S; Database=vladBD; Integrated Security=true";
         }
         protected SqlConnection GetConnection()
         {

@@ -42,8 +42,8 @@ namespace WpfApp1.Repos
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "insert into [User] (Username , Password) " + "values (@Username, @Password)";
-                command.Parameters.Add("@Username", SqlDbType.NVarChar).Value = login;
-                command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = password;
+                command.Parameters.AddWithValue("@Username", login);
+                command.Parameters.AddWithValue("@Password", password);
                 command.ExecuteNonQuery();
 
             }

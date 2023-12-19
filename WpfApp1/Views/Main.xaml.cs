@@ -19,9 +19,37 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class Main : Window
     {
+        public static Main main;
         public Main()
         {
             InitializeComponent();
+            main = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new SettingPage();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            //MainFrame.Content = new AddPage();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            //MainFrame.Content = new HomePage();
+        }
+
+        public void ChangeImage(Uri newImageUri)
+        {
+            var imageBrush = new ImageBrush(new BitmapImage(new Uri("E:\\РПМ\\УП_ПРАКТИКА\\WpfApp1\\WpfApp1\\Picture\\lightfon.jpg", UriKind.Relative)));
+            this.Background = imageBrush;
         }
     }
 }

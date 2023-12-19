@@ -23,6 +23,7 @@ namespace WpfApp1.Views
     {
 
         LoginViewModel viewModel;
+        public static LoginWindow loginWindow;
 
         public LoginWindow()
         {
@@ -30,6 +31,7 @@ namespace WpfApp1.Views
             var imageBrush = new ImageBrush(new BitmapImage(new Uri("E:\\РПМ\\УП_ПРАКТИКА\\WpfApp1\\WpfApp1\\Picture\\lightfon.jpg", UriKind.Relative)));
             this.Background = imageBrush;
             viewModel = new LoginViewModel();
+            loginWindow = this;
         }
 
 
