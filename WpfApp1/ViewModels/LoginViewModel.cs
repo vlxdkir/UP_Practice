@@ -15,6 +15,7 @@ using System.Net.Mail;
 using WpfApp1.Views;
 using System.Security.Cryptography;
 using System.Collections.ObjectModel;
+using System.Xml.Linq;
 
 namespace WpfApp1.ViewModels
 {
@@ -265,7 +266,13 @@ namespace WpfApp1.ViewModels
 
         private void ExecuteRegisterCommand(object parameter)
         {
-            if (FirstRegPassword == SecondRegPassword)
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(FirstRegPassword) || string.IsNullOrEmpty(SecondRegPassword))
+            {
+                string message = "Пользователь не создан. Заполните все поля.";
+                MessageBoxViewModel messageBox = new MessageBoxViewModel();
+                messageBox.ShowMessageBox(message);
+            }
+            else if (FirstRegPassword == SecondRegPassword)
             {
                 userRepository.CreateUser(Username, FirstRegPassword, 0);
                 string message = "Пользователь создан";
@@ -278,8 +285,9 @@ namespace WpfApp1.ViewModels
                 MessageBoxViewModel messageBox = new MessageBoxViewModel();
                 messageBox.ShowMessageBox(message);
             }
-            
-               
+
+
+
         }
 
         

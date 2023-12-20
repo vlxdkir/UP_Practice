@@ -38,7 +38,7 @@ namespace WpfApp1.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainFrame.Content = new AddUser();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)

@@ -28,7 +28,7 @@
        
         <Grid>
             <Grid.Background>
-                <ImageBrush x:Name="imageMain"/>
+                <ImageBrush ImageSource="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\darkfon.jpg" x:Name="imageMain"/>
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -80,26 +80,26 @@
                     </StackPanel>
                     <Button Margin="0 5"  Height="30" Style="{StaticResource menuButton}" Click="Home_Click">
                         <WrapPanel>
-                            <Image Source="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\icon_home.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
+                            <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\icon_home.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
                             <TextBlock Text="Главное" VerticalAlignment="Center" FontSize="16"/>
                         </WrapPanel>
                     </Button>
                     <Button  Margin="0 5"  Height="30"  Style="{StaticResource menuButton}" Click="Add_Click">
                         <WrapPanel>
                             <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\icon_add.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
-                            <TextBlock Text="База данных" VerticalAlignment="Center" FontSize="16"/>
+                            <TextBlock Text="Добавить" VerticalAlignment="Center" FontSize="16"/>
                         </WrapPanel>
                     </Button>
                     <Button Margin="0 5"  Height="30" Style="{StaticResource menuButton}" Click="Setting_Click">
                         <WrapPanel>
-                            <Image Source="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\icon_settings.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
+                            <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\icon_settings.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
                             <TextBlock Text="Настройки" VerticalAlignment="Center" FontSize="16"/>
                         </WrapPanel>
                     </Button>
                     
-                    <Button  Margin="0 140" Height="30" Style="{StaticResource menuButton}" Click="Button_Click">
+                    <Button  Margin="0 210" Height="30" Style="{StaticResource menuButton}" Click="Button_Click">
                         <WrapPanel>
-                            <Image Source="E:\РПМ\УП_ПРАКТИКА\WpfApp1\WpfApp1\Picture\icon_exit.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
+                            <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\icon_exit.png" Height="25" Width="25" HorizontalAlignment="Left" Margin="15 0" />
                             <TextBlock Text="Выход" VerticalAlignment="Center" FontSize="20"/>
                         </WrapPanel>
                     </Button>

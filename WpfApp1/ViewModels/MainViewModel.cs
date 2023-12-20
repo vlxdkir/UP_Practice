@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfApp1.Models;
 using WpfApp1.Repos;
 
@@ -17,12 +18,49 @@ namespace WpfApp1.ViewModels
         private UserAccountModel _currentUserAccount;
         private IUserRepository userRepository;
         private ObservableCollection<UserModel> users;
+        public UserRepository dbLog = new UserRepository();
 
         private int _id;
         private string _email;
         private string _password;
         private string _username;
         private int _acceslevel;
+        private string _name;
+        private string _lastname;
+
+        private int currentAccessLevel;
+        private Visibility _stackPanelVisibility = Visibility.Hidden;
+
+        private IUserRepository userEditor;
+        private UserModel _selectedUser;
+
+        public Visibility StackPanelVisibility
+        {
+            get { return _stackPanelVisibility; }
+            set
+            {
+                _stackPanelVisibility = value;
+                OnPropertyChanged(nameof(StackPanelVisibility));
+            }
+        }
+        public int CurrentAccessLevel
+        {
+            get { return currentAccessLevel; }
+            set
+            {
+                currentAccessLevel = value;
+                VisibilityEdit();
+                OnPropertyChanged("CurrentAccessLevel");
+            }
+        }
+
+        private void VisibilityEdit()
+        {
+            if (CurrentAccessLevel == 1)
+            {
+                StackPanelVisibility = Visibility.Visible;
+            }
+        }
 
 
         public string Email
@@ -115,18 +153,93 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+        public string Lastname
+        {
+            get
+            {
+                return _lastname;
+            }
+            set
+            {
+                _lastname = value;
+                OnPropertyChanged(nameof(Lastname));
+            }
+        }
+
+        public UserModel Selecteduser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged(nameof(Selecteduser));
+            }
+        }
+
+
+
+
+
+
         public MainViewModel()
         {
             userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
             LoadCurrentUserData();
             UpdateUserCollection();
+            EditCommand = new ViewModelCommand(Edit);
+            userEditor = new UserRepository();
+            PageEditUser = new ViewModelCommand(OpenPageEdit);
+            DeleteUser = new ViewModelCommand(DeleteSelectedUser);
         }
 
-       
+        public ViewModelCommand EditCommand { get; private set; }
+        public ViewModelCommand PageEditUser { get; private set; }
+        public ViewModelCommand DeleteUser { get; private set; }
+
+        private void Edit(object parameter)
+        {
+            userEditor.EditUser(Username, Password, Name, Lastname, Email, CurrentAccessLevel);
+            string message = "Пользователь отредактирован";
+            MessageBoxViewModel messageBox = new MessageBoxViewModel();
+            messageBox.ShowMessageBox(message);
+            UpdateUserCollection();
+            
+        }
+
+        private void DeleteSelectedUser(object parameter)
+        {
+            userRepository.DeleteUsername(Selecteduser.Id);
+            string message = "Пользователь Удален";
+            MessageBoxViewModel messageBox = new MessageBoxViewModel();
+            messageBox.ShowMessageBox(message);
+            UpdateUserCollection();
+
+        }
 
 
-
+        private void OpenPageEdit(object parameter)
+        {
+            Username = Selecteduser.Username;
+            Password = Selecteduser.Password;
+            Name = Selecteduser.Name;
+            Lastname = Selecteduser.LastName; 
+            Email = Selecteduser.Email;
+            AccessLevel = Selecteduser.AccessLevel;
+        }
         private void UpdateUserCollection()
         {
             Users = new ObservableCollection<UserModel>(userRepository.GetAllUsers());

@@ -74,7 +74,7 @@ namespace WpfApp1.Views
             Main main = Application.Current.Windows.OfType<Main>().FirstOrDefault();
 
             // Удаление ресурсных словарей, связанных с темами (если они уже были добавлены)
-            main.Resources.MergedDictionaries.Clear();
+            
 
             if (BtnToggle.Toggled1 == true)
             {

@@ -18,7 +18,8 @@
         <DataGrid x:Name="DGUsers" HeadersVisibility="Column" AutoGenerateColumns="False" IsReadOnly="True"  ItemsSource="{Binding Users}"
                   Style="{StaticResource dataGrid}"
                   RowStyle="{DynamicResource  DataGridRowStyle}" 
-                  CellStyle="{StaticResource  DataGridCellStyle}">
+                  CellStyle="{StaticResource  DataGridCellStyle}"
+                  SelectedItem="{Binding SelectedUser}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" HeaderStyle="{StaticResource dataGridHeader}" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Username" HeaderStyle="{StaticResource dataGridHeader}" Binding="{Binding Username}" Width="*"></DataGridTextColumn>
@@ -28,7 +29,7 @@
                 <DataGridTemplateColumn Width="auto" HeaderStyle="{StaticResource dataGridHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Style="{StaticResource dataGridButttonEdit}" Background="Transparent" Width="30" Height="30" Click="Edit_Click" Name="BtnEdit">
+                            <Button Style="{StaticResource dataGridButttonEdit}" Background="Transparent" Width="30" Height="30" Command="{Binding PageEditUser}" Click="Edit_Click" Name="BtnEdit">
                                 <StackPanel>
                                     <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\editicon.png"/>
                                 </StackPanel>
@@ -39,7 +40,7 @@
                 <DataGridTemplateColumn Width="auto" HeaderStyle="{StaticResource dataGridHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Style="{StaticResource dataGridButttonEdit}" Click="Delete_Click" Background="Transparent" Width="25" Height="25" Name="BtnEdit">
+                            <Button Style="{StaticResource dataGridButttonEdit}"  Command="{Binding DeleteUser}" Background="Transparent" Width="25" Height="25" Name="BtnEdit">
                                 <StackPanel>
                                     <Image Source="C:\Users\Gigabyte\Desktop\UP_Practice\WpfApp1\Picture\trash.png"/>
                                 </StackPanel>

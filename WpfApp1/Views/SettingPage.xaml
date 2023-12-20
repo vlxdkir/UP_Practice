@@ -37,7 +37,7 @@
                         MouseLeftButtonDown="SwitchToggle_MouseLeftButtonDown"/>
                     </WrapPanel>
                     <WrapPanel>
-                        <TextBlock Text="фвфывфы" Foreground="White"/>
+                        
                     </WrapPanel>
                     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
                 </StackPanel>

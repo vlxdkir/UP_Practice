@@ -78,7 +78,7 @@ namespace WpfApp1.Repos
                     {
                         user = new UserModel()
                         {
-                            Id = reader[0].ToString(),
+                            Id = Convert.ToInt32(reader[0].ToString()),
                             Username = reader[1].ToString(),
                             Password = string.Empty,
                             Name = reader[3].ToString(),
@@ -108,7 +108,7 @@ namespace WpfApp1.Repos
                     {
                         var user = new UserModel
                         {
-                            Id = reader["Id"] == DBNull.Value ? null : reader["Id"].ToString(),
+                            Id = Convert.ToInt32(reader["Id"]),
                             Username = reader["Username"] == DBNull.Value ? null : reader["Username"].ToString(),
                             Password = reader["Password"] == DBNull.Value ? null : reader["Password"].ToString(),
                             Name = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString(),
@@ -122,6 +122,48 @@ namespace WpfApp1.Repos
             }
             
             return users;
+        }
+
+
+        public void DeleteUsername(int userId)
+        {
+            SqlConnection connection = new SqlConnection("Server=DESKTOP-JIQP28S; Database=vladBD; Integrated Security=true");
+            string cmd = "DELETE FROM [User] WHERE Id = @Id";
+            SqlCommand deleteCommand = new SqlCommand(cmd, connection);
+            deleteCommand.Parameters.AddWithValue("@Id", userId);
+
+            try
+            {
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void EditUser(string newusername, string newpassword, string newemail, string newname, string newlastname, int newaccesslevel)
+        {
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "UPDATE [User] SET Password = @Password, Email = @Email, Name = @Name, Lastname = @Lastname, AccessLevel = @AccessLevel where Username = @Username";
+                command.Parameters.Add("@Username", SqlDbType.NVarChar).Value = newusername;
+                command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = newpassword;
+                command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = newemail;
+                command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = newname;
+                command.Parameters.Add("@Lastname", SqlDbType.NVarChar).Value = newlastname;
+                command.Parameters.Add("@AccessLevel", SqlDbType.NVarChar).Value = newaccesslevel;
+                
+                command.ExecuteNonQuery();
+            }
         }
         public void Remove(int id)
         {

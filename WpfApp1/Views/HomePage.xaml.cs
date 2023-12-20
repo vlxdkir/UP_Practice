@@ -33,16 +33,16 @@ namespace WpfApp1.Views
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Content = new EditPage();
+            MainFrame.Content = new EditPage();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection("Data Source=ONLYUP; Initial Catalog=MVVMLoginDb; Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Server=DESKTOP-JIQP28S; Database=vladBD; Integrated Security=true");
             connection.Open();
-            string cmd = "SELECT Id, Username, Password, Email, AccessLevel FROM UsersTrain";
+            string cmd = "SELECT Id, Username, Password, Name, LastName, Email, AccessLevel FROM User";
             SqlDataAdapter dataAdp = new SqlDataAdapter(cmd, connection);
-            DataTable dt = new DataTable("UsersTrain");
+            DataTable dt = new DataTable("User");
             dataAdp.Fill(dt);
 
             // Очистите содержимое DataGridView
@@ -53,8 +53,8 @@ namespace WpfApp1.Views
         }
         public void DeleteUsername(int Id)
         {
-            SqlConnection connection = new SqlConnection("Data Source=ONLYUP;Initial Catalog=MVVMLoginDb;Integrated Security=True");
-            string cmd = "DELETE FROM [UsersTrain] WHERE Id = @Id";
+            SqlConnection connection = new SqlConnection("Server=DESKTOP-JIQP28S; Database=vladBD; Integrated Security=true");
+            string cmd = "DELETE FROM [User] WHERE Id = @Id";
             SqlCommand deleteCommand = new SqlCommand(cmd, connection);
             deleteCommand.Parameters.AddWithValue("@Id", Id);
 
